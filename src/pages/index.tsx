@@ -11,6 +11,7 @@ import usersAvatarExampleImg from '../assets/users-avatar-example.png';
 import iconCheckImg from '../assets/icon-check.svg';
 import { api } from '../lib/axios';
 import { FormEvent, useState } from 'react';
+import { GetStaticProps } from 'next';
 
 export default function Home(props: HomeProps) {
   
@@ -109,7 +110,7 @@ export default function Home(props: HomeProps) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const [
     poolCountResponse, 
     guessCountResponse, 
@@ -126,7 +127,7 @@ export const getStaticProps = async () => {
       guessCount: guessCountResponse.data.count,
       userCount: usersCountResponse.data.count,
     },
-    revalidate: 20,
+    revalidate: 10,
   }
 }
 
